@@ -12,11 +12,11 @@ seed = 7
 numpy.random.seed(seed)
 
 def add_model(dataset):
-    ds = ClassificationDataSet(108,1,nb_classes=2)
+    ds = ClassificationDataSet(109,1,nb_classes=2)
     dataframe = pandas.read_csv("./train.csv", delimiter=" ",header=None)
     data_train = dataframe.values
     data_train=numpy.concatenate((data_train,dataset))
-    input=data_train[:,1:109].astype(float)
+    input=data_train[:,1:110].astype(float)
     target=data_train[:,0]
     target = numpy.reshape(target, (-1, 1))
     ds.setField('input', input)
