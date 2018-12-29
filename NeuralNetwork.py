@@ -12,11 +12,11 @@ seed = 7
 numpy.random.seed(seed)
 
 def add_model(dataset):
-    ds = ClassificationDataSet(112,1,nb_classes=2)
+    ds = ClassificationDataSet(111,1,nb_classes=2)
     dataframe = pandas.read_csv("./train.csv", delimiter=" ",header=None)
     data_train = dataframe.values
     data_train=numpy.concatenate((data_train,dataset))
-    input=data_train[:,1:113].astype(float)
+    input=data_train[:,1:112].astype(float)
     target=data_train[:,0]
     target = numpy.reshape(target, (-1, 1))
     ds.setField('input', input)
@@ -26,6 +26,6 @@ def add_model(dataset):
     def train():
         back=BackpropTrainer(net,ds,learningrate = 0.0001, momentum = 0.1,verbose=True, weightdecay=0.1)
         #back.trainUntilConvergence(verbose=True)
-        back.trainEpochs(100)
+        back.trainEpochs(150)
         NetworkWriter.writeToFile(net, './model.xml')
     train()
